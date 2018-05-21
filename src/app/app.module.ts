@@ -10,11 +10,7 @@ import {CognitoUtil} from "./service/cognito.service";
 import {routing} from "./app.routes";
 import {AboutComponent, HomeComponent, HomeLandingComponent} from "./public/home.component";
 import {AwsUtil} from "./service/aws.service";
-import {UseractivityComponent} from "./secure/useractivity/useractivity.component";
-import {MyProfileComponent} from "./secure/profile/myprofile.component";
 import {SecureHomeComponent} from "./secure/landing/securehome.component";
-import {JwtComponent} from "./secure/jwttokens/jwt.component";
-import {DynamoDBService} from "./service/ddb.service";
 import {LoginComponent} from "./public/auth/login/login.component";
 import {RegisterComponent} from "./public/auth/register/registration.component";
 import {ForgotPassword2Component, ForgotPasswordStep1Component} from "./public/auth/forgot/forgotPassword.component";
@@ -47,10 +43,7 @@ import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order
         AboutComponent,
         HomeLandingComponent,
         HomeComponent,
-        UseractivityComponent,
-        MyProfileComponent,
         SecureHomeComponent,
-        JwtComponent,
         AppComponent,
         CreditCardComponent,
         AddCreditCardComponent,
@@ -70,7 +63,6 @@ import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order
     providers: [
         CognitoUtil,
         AwsUtil,
-        DynamoDBService,
         UserRegistrationService,
         UserLoginService,
         UserParametersService,
