@@ -1,29 +1,32 @@
 <form class="form-signin" method="POST" action="#" role="form">
-    <div class="form-group">
-        <h2>Confirm Registration</h2>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <h2>Confirme o Registro</h2>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    
+    <div class="form-signin-inner">
+        <div *ngIf="errorMessage!=null" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
+        <mat-form-field class="full-width" *ngIf="email===null">
+            <input matInput placeholder="Email" required type="email" maxlength="50" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Código de confirmação" type="text" maxlength="13" [(ngModel)]="confirmationCode" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <div>
+            <button mat-raised-button color="primary" (click)="onConfirmRegistration()"  type="submit" class="full-width">Confirmar</button>
+        </div>
+
+        <hr>
+        <p>Não encontrou o código?
+            <a mat-button [routerLink]="['/home/resendCode']">Reenviar código</a>
+            <a mat-button [routerLink]="['/home/register']">Cadastre-se</a>
+            <a mat-button [routerLink]="['/home/login']">Login</a>
+        </p>
     </div>
-    <div *ngIf="errorMessage!=null" class="alert alert-danger">
-        {{ errorMessage }}
-    </div>
-    <div class="form-group" *ngIf="email===null">
-        <label class="control-label" for="confirmationCode">Email</label>
-        <input id="email" type="email" maxlength="50" class="form-control"
-               [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group">
-        <label class="control-label" for="confirmationCode">Confirmation Code</label>
-        <input id="confirmationCode" type="text" maxlength="50" class="form-control"
-               [(ngModel)]="confirmationCode" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group">
-        <button (click)="onConfirmRegistration()" id="confirmRegistration" type="submit"
-                class="btn btn-info btn-block">Confirm
-        </button>
-    </div>
-    <hr>
-    <p>Can't find your code? <a [routerLink]="['/home/resendCode']"> <i class="fa fa-fw fa-group"></i> Resend
-        Code</a>
-        <a [routerLink]="['/home/register']"> <i class="fa fa-fw fa-group"></i> Register</a> <a
-                [routerLink]="['/home/login']"> <i class="fa fa-fw fa-user"></i> Login</a>
-    </p>
 </form>

@@ -5,11 +5,11 @@
         </mat-toolbar-row>
     </mat-toolbar>
 
-    <div *ngIf="errorMessage!=null" class="alert alert-danger">
-        {{ errorMessage }}
-    </div>
-
+    
     <div class="form-signin-inner">
+        <div *ngIf="errorMessage!=null" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
         <mat-form-field class="full-width">
             <input matInput placeholder="Nome" required type="text" maxlength="50" [(ngModel)]="registrationUser.name" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
@@ -19,11 +19,11 @@
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <input matInput placeholder="Telefone" required type="email" maxlength="13" [(ngModel)]="registrationUser.phone_numbe" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Telefone" type="phone" maxlength="13" [(ngModel)]="registrationUser.phone_number" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
 
         <mat-form-field class="full-width">
-            <input matInput placeholder="Senha" required type="email" maxlength="25" [(ngModel)]="registrationUser.password" [ngModelOptions]="{standalone: true}">
+            <input matInput placeholder="Senha" required type="password" maxlength="25" [(ngModel)]="registrationUser.password" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
 
         <div>
