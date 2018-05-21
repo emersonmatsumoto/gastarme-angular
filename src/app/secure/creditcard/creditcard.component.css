@@ -1,0 +1,19 @@
+.credit-card {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.close-button {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    z-index: 9999;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1;
+}

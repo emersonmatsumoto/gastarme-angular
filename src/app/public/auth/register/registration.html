@@ -1,0 +1,39 @@
+<form class="form-signin" method="POST" action="#" role="form">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <h2>Cadastre-se</h2>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div *ngIf="errorMessage!=null" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+
+    <div class="form-signin-inner">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Nome" required type="text" maxlength="50" [(ngModel)]="registrationUser.name" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Email" required type="email" maxlength="50" [(ngModel)]="registrationUser.email" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Telefone" required type="email" maxlength="13" [(ngModel)]="registrationUser.phone_numbe" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Senha" required type="email" maxlength="25" [(ngModel)]="registrationUser.password" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <div>
+            <button mat-raised-button color="primary" (click)="onRegister()" id="signupSubmit" type="submit" class="full-width">Registrar</button>
+        </div>
+
+        <hr>
+        <p>Já possui uma conta?
+            <a mat-button [routerLink]="['/home/login']">
+                <i class="fa fa-fw fa-lock"></i>Login</a>
+        </p>
+    </div>
+</form>

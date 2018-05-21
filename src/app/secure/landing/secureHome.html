@@ -1,0 +1,46 @@
+<mat-drawer-container autosize style="height: 100vh;">
+    <mat-drawer #drawer mode="over">
+        <mat-toolbar color="primary" class="toolbar-menu">
+            <mat-toolbar-row>
+                <div class="avatar" [style.backgroundColor]="background">
+                    <span>{{firstLetter}}</span>
+                </div>
+            </mat-toolbar-row>
+            <mat-toolbar-row>
+                <h1>{{nickname}}</h1>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['/securehome/wallet']">
+                <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+                <h4 mat-line>Carteira</h4>
+            </a>
+            <a mat-list-item [routerLink]="['/securehome/creditcard']">
+                <mat-icon mat-list-icon>payment</mat-icon>
+                <h4 mat-line>Cartões</h4>
+            </a>
+            <a mat-list-item [routerLink]="['/securehome/order']">
+                <mat-icon mat-list-icon>shopping_cart</mat-icon>
+                <h4 mat-line>Compras</h4>
+            </a>
+            <a mat-list-item [routerLink]="['/securehome/logout']">
+                <mat-icon mat-list-icon>input</mat-icon>
+                <h4 mat-line>Logout</h4>
+            </a>
+
+        </mat-nav-list>
+
+    </mat-drawer>
+
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>{{routeName}}</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="intro-header">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

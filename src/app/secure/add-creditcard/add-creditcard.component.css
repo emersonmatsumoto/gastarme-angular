@@ -1,0 +1,9 @@
+.credit-card {
+    width: 308px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.credit-card .small-width {
+    width: 151px;
+}

@@ -1,0 +1,21 @@
+<button mat-fab class="add-button" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>
+
+
+<table class="mat-table order-table">
+  <thead>
+    <tr class="mat-header-row">
+      <th class="mat-header-cell">Data</th>
+      <th class="mat-header-cell">Descrição</th>
+      <th class="mat-header-cell">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="mat-row" *ngFor="let order of orders">
+      <td class="mat-cell">{{order.date}}</td>
+      <td class="mat-cell">{{order.description}}</td>
+      <td class="mat-cell">{{order.total}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,46 @@
+<mat-card class="example-card form-signin">
+
+    <mat-card-content>
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <h2>Login</h2>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+        <form method="POST" action="#" role="form">
+            <div *ngIf="!mfaStep" class="form-signin-inner">
+                <p *ngIf="errorMessage!=null" class="alert alert-danger">
+                    {{ errorMessage }}
+                </p>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Email" required type="email" maxlength="100" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Senha" id="signupPassword" required type="password" maxlength="25" length="40" [(ngModel)]="password"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <div>
+                    <button mat-raised-button color="primary" (click)="onLogin()" id="signupSubmit" type="submit" class="full-width">Login</button>
+                </div>
+
+                <p>
+                    <a mat-button [routerLink]="['/home/register']">Cadastre-se</a>
+                    <a mat-button [routerLink]="['/home/forgotPassword']">Esqueceu a senha?</a>
+                    <a mat-button [routerLink]="['/home/resendCode']">Reenviar código de ativação</a>
+                </p>
+
+            </div>
+
+
+            <div class="form-group" *ngIf="mfaStep">
+                <awscognito-mfa [destination]="mfaData.destination" [onSubmit]="mfaData.callback"></awscognito-mfa>
+                <hr>
+                <a (click)="cancelMFA()" href="">Cancel</a>
+            </div>
+        </form>
+
+    </mat-card-content>
+
+</mat-card>

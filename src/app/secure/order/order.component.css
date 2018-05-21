@@ -1,0 +1,19 @@
+.add-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1;
+}
+
+.order-table {
+    margin: 10px auto;
+
+}
+
+.order-table th {
+    padding: 5px 7px;
+}
+
+.order-table td {
+    padding: 5px 7px;
+}

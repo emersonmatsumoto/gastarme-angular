@@ -1,0 +1,26 @@
+<button mat-fab class="add-button" [routerLink]="['/securehome/add-creditcard']">
+    <mat-icon>add</mat-icon>
+</button>
+
+<mat-card class="credit-card" *ngFor="let creditCard of creditCards">
+    <mat-card-content>
+        <button mat-icon-button class="close-button" (click)="openDialog(creditCard.id)">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Nome" disabled value="{{creditCard.name}}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Número" disabled value="{{creditCard.cardNumber}}">
+        </mat-form-field>
+        <mat-form-field class="small-width">
+            <input matInput placeholder="Válido até" disabled value="{{creditCard.expiryDate}}">
+        </mat-form-field>
+        <mat-form-field class="small-width">
+            <input matInput placeholder="CVV" disabled value="{{creditCard.cvv}}">
+        </mat-form-field>
+        <mat-form-field class="small-width">
+            <input matInput placeholder="Limite" disabled value="{{creditCard.limit}}">
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>
