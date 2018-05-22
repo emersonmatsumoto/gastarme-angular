@@ -3,9 +3,9 @@ export const environment = {
 
     region: 'us-east-1',
 
-    identityPoolId: 'us-east-1:fbe0340f-9ffc-4449-a935-bb6a6661fd53',
-    userPoolId: 'us-east-1_PGSbCVZ7S',
-    clientId: 'hh5ibv67so0qukt55c5ulaltk',
+    identityPoolId: 'us-east-1:74f40d63-6613-4ea9-8421-38a28add90f3',
+    userPoolId: 'us-east-1_EIhqTDJiX',
+    clientId: '6p6rd6et7s63v15gq4d3fgic34',
 
     rekognitionBucket: 'rekognition-pics',
     albumName: "usercontent",
@@ -17,7 +17,8 @@ export const environment = {
     cognito_identity_endpoint: '',
     sts_endpoint: '',
     dynamodb_endpoint: '',
-    s3_endpoint: ''
+    s3_endpoint: '',
 
+    api: 'https://bl6f0my805.execute-api.us-east-1.amazonaws.com/dev'
 };
 

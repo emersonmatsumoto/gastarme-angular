@@ -60,7 +60,10 @@ class CreateCallback implements Callback {
     constructor(public createComponent: CreateOrderDialogComponent) { }
     callback() { }
     callbackWithParam(result) {
-        this.createComponent.createSubmit(result).subscribe(() => this.createComponent.createCallback());
+        this.createComponent.createSubmit(result).subscribe(
+            () => this.createComponent.createCallback(),
+            (error) => this.createComponent.createError(error)
+        );
     }
 }
 
@@ -77,6 +80,9 @@ class CreateCallback implements Callback {
         <mat-form-field>
             <input matInput placeholder="Valor" required type="text" maxlength="50" [(ngModel)]="total" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
+        <p *ngIf="errorMessage!=null" class="alert alert-danger">
+            {{ errorMessage }}
+        </p>
     </mat-dialog-content>
     <mat-dialog-actions>
         <button mat-raised-button color="primary" (click)="create()">Adicionar</button>
@@ -87,6 +93,7 @@ class CreateCallback implements Callback {
 export class CreateOrderDialogComponent {
     total = 0;
     description = "";
+    errorMessage = null;
 
     constructor(
         public dialogRef: MatDialogRef<CreateOrderDialogComponent>,
@@ -112,6 +119,11 @@ export class CreateOrderDialogComponent {
 
     createCallback(): void {
         this.dialogRef.close();
+    }
+
+    createError(error) {
+        let message = JSON.parse(error.error.errorMessage);
+        this.errorMessage = JSON.stringify(message.errorMessage);
     }
 
 }
