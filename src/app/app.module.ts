@@ -28,6 +28,7 @@ import { WalletComponent } from './secure/wallet/wallet.component';
 import { WalletService } from "./service/wallet.service";
 import { OrderService } from "./service/order.service";
 import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order.component';
+import { AdminComponent } from './secure/admin/admin.component';
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order
         RemoveCreditCardDialogComponent,
         CreateOrderDialogComponent,
         WalletComponent,
-        OrderComponent
+        OrderComponent,
+        AdminComponent
     ],
     imports: [
         BrowserModule,

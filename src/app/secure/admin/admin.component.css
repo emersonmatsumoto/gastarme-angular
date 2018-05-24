@@ -1,0 +1,14 @@
+.table {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.table-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+  
+.table-header .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
