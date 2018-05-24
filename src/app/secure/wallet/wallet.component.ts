@@ -26,22 +26,23 @@ export class WalletComponent implements OnInit, LoggedInCallback {
     ngOnInit() {
     }
      
-    setWallet(wallet: Wallet) {
+    setWallet(wallets: Wallet) {
         console.log("WalletComponent: setWallet");
-        this.availableCredit = wallet.availableCredit;
-        this.currentBalance = wallet.creditLimit - wallet.availableCredit;
+
+        this.availableCredit = wallets.availableCredit;
+        this.currentBalance = wallets.creditLimit - wallets.availableCredit;
     }
     
     isLoggedIn(message: string, isLoggedIn: boolean) {
         if (!isLoggedIn) {
             this.router.navigate(['/home/login']);
         } else {
-            this.cognitoUtil.getIdToken(new IdTokenCallback(this));
+            this.cognitoUtil.getIdToken(new ListCallback(this));
         }
     }
 }
 
-class IdTokenCallback implements Callback {
+class ListCallback implements Callback {
     constructor(public walletComponent: WalletComponent) {
 
     }
@@ -51,7 +52,17 @@ class IdTokenCallback implements Callback {
     }
 
     callbackWithParam(result) {
-        this.walletComponent.walletService.get(result).subscribe(wallet => this.walletComponent.setWallet(wallet));
+        this.walletComponent.walletService.get(result).subscribe(wallets => this.checkWallet(result, wallets));
     }    
+
+    checkWallet(token: string, wallets: Wallet[]) {
+        if (wallets.length === 0) {
+            this.walletComponent.walletService.create(token).subscribe((wallet) => this.walletComponent.setWallet(wallet));
+        } else {
+            this.walletComponent.setWallet(wallets[0]);
+        }
+        
+
+    }
 }
 

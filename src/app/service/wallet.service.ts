@@ -11,8 +11,16 @@ export class WalletService{
     }
 
     
-    get(token: string): Observable<Wallet> {
-        return this.http.get<Wallet>(`${environment.api}/wallets`, {
+    get(token: string): Observable<Wallet[]> {
+        return this.http.get<Wallet[]>(`${environment.api}/wallets`, {
+            headers: {
+                'Authorization': token
+            } 
+        });
+    }
+
+    create(token: string): Observable<Wallet> {
+        return this.http.post<Wallet>(`${environment.api}/wallets`, null, {
             headers: {
                 'Authorization': token
             } 
