@@ -3,19 +3,38 @@
 </button>
 
 
-<table class="mat-table order-table">
-  <thead>
-    <tr class="mat-header-row">
-      <th class="mat-header-cell">Data</th>
-      <th class="mat-header-cell">Descrição</th>
-      <th class="mat-header-cell">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="mat-row" *ngFor="let order of orders">
-      <td class="mat-cell">{{order.date}}</td>
-      <td class="mat-cell">{{order.description}}</td>
-      <td class="mat-cell">{{order.total}}</td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="table mat-elevation-z8">
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="date">
+      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="total">
+      <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.total}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

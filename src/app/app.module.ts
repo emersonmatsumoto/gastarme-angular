@@ -28,7 +28,7 @@ import { WalletComponent } from './secure/wallet/wallet.component';
 import { WalletService } from "./service/wallet.service";
 import { OrderService } from "./service/order.service";
 import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order.component';
-import { AdminComponent } from './secure/admin/admin.component';
+import { AdminComponent, DeleteWalletComponent } from './secure/admin/admin.component';
 
 @NgModule({
     declarations: [
@@ -50,6 +50,7 @@ import { AdminComponent } from './secure/admin/admin.component';
         AddCreditCardComponent,
         RemoveCreditCardDialogComponent,
         CreateOrderDialogComponent,
+        DeleteWalletComponent,
         WalletComponent,
         OrderComponent,
         AdminComponent
@@ -73,7 +74,7 @@ import { AdminComponent } from './secure/admin/admin.component';
         OrderService,
         RouteNames],
     bootstrap: [AppComponent],
-    entryComponents: [RemoveCreditCardDialogComponent, CreateOrderDialogComponent]
+    entryComponents: [RemoveCreditCardDialogComponent, CreateOrderDialogComponent, DeleteWalletComponent]
 })
 export class AppModule {
 }

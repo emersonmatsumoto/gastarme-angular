@@ -11,8 +11,12 @@ export class WalletService{
     }
 
     
-    get(token: string): Observable<Wallet[]> {
-        return this.http.get<Wallet[]>(`${environment.api}/wallets`, {
+    get(token: string, all = false): Observable<Wallet[]> {
+        let param = "";
+        if (all) {
+            param = "?all=true";
+        }
+        return this.http.get<Wallet[]>(`${environment.api}/wallets${param}`, {
             headers: {
                 'Authorization': token
             } 
@@ -24,6 +28,14 @@ export class WalletService{
             headers: {
                 'Authorization': token
             } 
+        });
+    }
+
+    delete(token: string, id: string): Observable<Object> {        
+        return this.http.delete(`${environment.api}/wallets/${id}`, {
+            headers: {
+                'Authorization': token
+            }
         });
     }
 }

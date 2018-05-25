@@ -5,8 +5,9 @@ import { UserParametersService } from '../../service/user-parameters.service';
 import { RouteNames } from '../../service/route-names.service';
 import { CognitoUtil, Callback } from '../../service/cognito.service';
 import { OrderService } from '../../service/order.service';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatTableDataSource, MatPaginator } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
+import { Order } from '../../model/order.model';
 
 @Component({
     selector: 'app-order',
@@ -14,10 +15,21 @@ import { Observable } from 'rxjs/Observable';
     styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
+    displayedColumns = ['date', 'description', 'total'];
+    dataSource: MatTableDataSource<Order>;
 
-    orders = [];
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+    }
 
+    applyFilter(filterValue: string) {
+        filterValue = filterValue.trim(); // Remove whitespace
+        filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+        this.dataSource.filter = filterValue;
+    }
+ 
     constructor(public router: Router, public userService: UserLoginService, public userParams: UserParametersService, private routeNames: RouteNames, private cognitoUtil: CognitoUtil, public orderService: OrderService, public dialog: MatDialog) {
         this.userService.isAuthenticated(this);
         this.routeNames.name.next('Compras');
@@ -26,6 +38,11 @@ export class OrderComponent implements OnInit {
 
     ngOnInit() {
     }
+
+    setOrders(orders: Order[]) {
+        this.dataSource = new MatTableDataSource(orders);
+    }
+
 
     isLoggedIn(message: string, isLoggedIn: boolean) {
         if (!isLoggedIn) {
@@ -37,14 +54,14 @@ export class OrderComponent implements OnInit {
 
     openDialog(): void {
         let dialogRef = this.dialog.open(CreateOrderDialogComponent, {
-          width: '250px'
+            width: '250px'
         });
-    
+
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
-            this.cognitoUtil.getIdToken(new ListCallback(this));            
+            this.cognitoUtil.getIdToken(new ListCallback(this));
         });
-      }
+    }
 
 }
 
@@ -52,7 +69,7 @@ class ListCallback implements Callback {
     constructor(public orderComponent: OrderComponent) { }
     callback() { }
     callbackWithParam(result) {
-        this.orderComponent.orderService.list(result).subscribe(orders => this.orderComponent.orders = orders);
+        this.orderComponent.orderService.list(result).subscribe(orders => this.orderComponent.setOrders(orders));
     }
 }
 
