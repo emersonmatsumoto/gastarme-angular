@@ -1,9 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {UserLoginService} from "../../service/user-login.service";
-import {LoggedInCallback, Callback} from "../../service/cognito.service";
+import {LoggedInCallback, Callback, CognitoUtil} from "../../service/cognito.service";
 import { RouteNames } from "../../service/route-names.service";
 import { UserParametersService } from "../../service/user-parameters.service";
+import { UserService } from "../../service/user.service";
 
 @Component({
     selector: 'awscognito-angular2-app',
@@ -20,9 +21,10 @@ export class SecureHomeComponent implements OnInit, LoggedInCallback {
     nickname = "";
     firstLetter = "";
     background = "";
+    isAdmin = false;
 
-    constructor(public router: Router, public userService: UserLoginService, public userParams: UserParametersService, private _routeNames:RouteNames) {
-        this.userService.isAuthenticated(this);
+    constructor(public router: Router, public userLoginService: UserLoginService, public userParams: UserParametersService, private _routeNames:RouteNames, private userService: UserService, private cognitoUtil: CognitoUtil) {
+        this.userLoginService.isAuthenticated(this);
         this._routeNames.name.subscribe(n => this.routeName = n);
         console.log("SecureHomeComponent: constructor");
     }
@@ -36,6 +38,12 @@ export class SecureHomeComponent implements OnInit, LoggedInCallback {
             this.router.navigate(['/home/login']);
         } else {
             this.userParams.getParameters(new GetProfileCallback(this));
+            this.userService.isGroup(this.cognitoUtil.getCurrentUser(), "admin")
+                .subscribe(
+                    isGroup => this.isAdmin = isGroup,
+                    err => console.log(err)
+                );
+
         }
     }
 }

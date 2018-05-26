@@ -29,6 +29,7 @@ import { WalletService } from "./service/wallet.service";
 import { OrderService } from "./service/order.service";
 import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order.component';
 import { AdminComponent, DeleteWalletComponent } from './secure/admin/admin.component';
+import { UserService } from "./service/user.service";
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { AdminComponent, DeleteWalletComponent } from './secure/admin/admin.comp
         UserRegistrationService,
         UserLoginService,
         UserParametersService,
+        UserService,
         CreditCardService,
         WalletService,
         OrderService,
