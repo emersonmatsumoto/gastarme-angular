@@ -1,0 +1,26 @@
+<mat-card class="example-card form-signin">
+
+  <mat-card-content>
+    <form class="form-signin" method="POST" action="#" role="form">
+
+      <div class="form-signin-inner">
+        <div *ngIf="errorMessage!=null" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nome" required type="text" maxlength="50" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Telefone" type="phone" maxlength="13" [(ngModel)]="phone_number" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <div>
+          <button mat-raised-button color="primary" (click)="onRegister()" id="signupSubmit" type="submit" class="full-width">Atualizar</button>
+        </div>
+
+
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

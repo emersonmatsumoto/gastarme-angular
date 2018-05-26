@@ -30,6 +30,7 @@ import { OrderService } from "./service/order.service";
 import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order.component';
 import { AdminComponent, DeleteWalletComponent } from './secure/admin/admin.component';
 import { UserService } from "./service/user.service";
+import { UserComponent } from './secure/user/user.component';
 
 @NgModule({
     declarations: [
@@ -54,7 +55,8 @@ import { UserService } from "./service/user.service";
         DeleteWalletComponent,
         WalletComponent,
         OrderComponent,
-        AdminComponent
+        AdminComponent,
+        UserComponent
     ],
     imports: [
         BrowserModule,

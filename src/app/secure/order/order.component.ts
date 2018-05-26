@@ -16,7 +16,7 @@ import { Order } from '../../model/order.model';
 })
 export class OrderComponent implements OnInit {
     displayedColumns = ['date', 'description', 'total'];
-    dataSource: MatTableDataSource<Order>;
+    dataSource = new MatTableDataSource<Order>();
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 

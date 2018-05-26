@@ -13,6 +13,7 @@ import { AddCreditCardComponent } from "./secure/add-creditcard/add-creditcard.c
 import { WalletComponent } from "./secure/wallet/wallet.component";
 import { OrderComponent } from "./secure/order/order.component";
 import { AdminComponent } from "./secure/admin/admin.component";
+import { UserComponent } from "./secure/user/user.component";
 
 const homeRoutes: Routes = [
     {
@@ -52,6 +53,7 @@ const secureHomeRoutes: Routes = [
             { path: 'wallet', component: WalletComponent },
             { path: 'order', component: OrderComponent },
             { path: 'admin', component: AdminComponent },
+            { path: 'user', component: UserComponent },
             { path: '', component: WalletComponent }]
     }
 ];
