@@ -14,6 +14,7 @@ import { CreditCard } from '../../model/credit-card.model';
 })
 export class AddCreditCardComponent implements LoggedInCallback {
     
+    description: string;
     name: string;
     cardNumber: string;
     expiryDate: string;
@@ -37,6 +38,7 @@ export class AddCreditCardComponent implements LoggedInCallback {
     public submit(token: string): Observable<Object> {
         console.log("submit credit card");
         let creditCard = {
+            description: this.description,
             name: this.name,
             cardNumber: this.cardNumber,
             expiryDate: this.expiryDate,

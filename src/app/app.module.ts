@@ -1,5 +1,5 @@
 import {BrowserModule} from "@angular/platform-browser";
-import {NgModule} from "@angular/core";
+import {NgModule, LOCALE_ID} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
@@ -31,6 +31,9 @@ import { OrderComponent, CreateOrderDialogComponent } from './secure/order/order
 import { AdminComponent, DeleteWalletComponent } from './secure/admin/admin.component';
 import { UserService } from "./service/user.service";
 import { UserComponent } from './secure/user/user.component';
+import localeBr from '@angular/common/locales/pt';
+import { registerLocaleData } from "@angular/common";
+registerLocaleData(localeBr);
 
 @NgModule({
     declarations: [
@@ -76,7 +79,8 @@ import { UserComponent } from './secure/user/user.component';
         CreditCardService,
         WalletService,
         OrderService,
-        RouteNames],
+        RouteNames,
+        {provide: LOCALE_ID, useValue: 'pt'}],
     bootstrap: [AppComponent],
     entryComponents: [RemoveCreditCardDialogComponent, CreateOrderDialogComponent, DeleteWalletComponent]
 })

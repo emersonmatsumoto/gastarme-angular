@@ -17,3 +17,7 @@
     right: 25px;
     z-index: 1;
 }
+
+.small-width {
+    width: 148px;
+}

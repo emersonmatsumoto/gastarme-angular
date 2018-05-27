@@ -2,10 +2,10 @@
     <mat-card-content>
  
         <mat-form-field class="full-width">
-            <input matInput placeholder="Limite Disponível" disabled value="{{availableCredit}}">
+            <input matInput placeholder="Limite Disponível" disabled value="{{availableCredit | currency: 'BRL' }}">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <input matInput placeholder="Fatura Atual" disabled value="{{currentBalance}}">
+            <input matInput placeholder="Fatura Atual" disabled value="{{currentBalance | currency: 'BRL' }}">
         </mat-form-field>
     </mat-card-content>
 </mat-card>

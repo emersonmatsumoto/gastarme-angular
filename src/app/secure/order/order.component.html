@@ -13,22 +13,24 @@
 
   <mat-table [dataSource]="dataSource">
 
-    <!-- ID Column -->
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.date | date: 'dd/MM/yyyy HH:mm'}} </mat-cell>
     </ng-container>
 
-    <!-- Progress Column -->
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.description}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
+    <ng-container matColumnDef="creditCardDescription">
+        <mat-header-cell *matHeaderCellDef> Cartão </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.creditCardDescription}} </mat-cell>
+      </ng-container>
+
     <ng-container matColumnDef="total">
       <mat-header-cell *matHeaderCellDef> Valor </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.total}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.total | currency: 'BRL' }} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

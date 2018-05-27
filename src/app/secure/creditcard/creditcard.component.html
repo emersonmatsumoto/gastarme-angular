@@ -8,6 +8,9 @@
             <mat-icon>close</mat-icon>
         </button>
         <mat-form-field class="full-width">
+            <input matInput placeholder="Descrição" disabled value="{{creditCard.description}}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
             <input matInput placeholder="Nome" disabled value="{{creditCard.name}}">
         </mat-form-field>
         <mat-form-field class="full-width">
@@ -20,7 +23,10 @@
             <input matInput placeholder="CVV" disabled value="{{creditCard.cvv}}">
         </mat-form-field>
         <mat-form-field class="small-width">
-            <input matInput placeholder="Limite" disabled value="{{creditCard.limit}}">
+            <input matInput placeholder="Limite" disabled value="{{creditCard.limit | currency:'BRL' }}">
+        </mat-form-field>
+        <mat-form-field class="small-width">
+            <input matInput placeholder="Fatura" disabled value="{{creditCard.limit - creditCard.availableCredit | currency:'BRL' }}">
         </mat-form-field>
     </mat-card-content>
 </mat-card>
