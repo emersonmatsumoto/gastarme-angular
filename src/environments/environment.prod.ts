@@ -19,6 +19,6 @@ export const environment = {
     dynamodb_endpoint: '',
     s3_endpoint: '',
 
-    api: 'https://bl6f0my805.execute-api.us-east-1.amazonaws.com/dev'
+    api: 'https://wvbq16kp24.execute-api.us-east-1.amazonaws.com/prod'
 };
 
