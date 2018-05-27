@@ -15,6 +15,11 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: Install aws cli
+          command:
+              sudo apt-get -y -qq install awscli
+              
+      - run:
           name: Install Angular
           command: |
             #sudo npm i -g serverless
