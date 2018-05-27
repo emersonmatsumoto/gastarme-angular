@@ -18,13 +18,13 @@ jobs:
           name: Install aws cli
           command:
               sudo apt-get -y -qq install awscli
-              
+
       - run:
           name: Install Angular
           command: |
-            #sudo npm i -g serverless
+            sudo npm i -g @angular/cli
             npm install
-            npm build
+            ng build --prod --aot=false
 
       - save_cache:
           paths:
