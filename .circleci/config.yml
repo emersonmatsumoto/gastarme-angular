@@ -15,7 +15,7 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: Install Serverless CLI and dependencies
+          name: Install Angular
           command: |
             #sudo npm i -g serverless
             npm install
@@ -26,11 +26,6 @@ jobs:
             - node_modules
           key: v1-dependencies-
 
-  deploy:
-    machine:
-      enabled: true
-    working_directory: ~/circle-tmp-folder
-    steps:
-       - run:
+      - run:
           name: Deploy
-          command: 'aws s3 sync ${source}/ s3://gastarme-public --region us-east-1'
+          command: 'aws s3 sync dist/ s3://gastarme-public --region us-east-1'
