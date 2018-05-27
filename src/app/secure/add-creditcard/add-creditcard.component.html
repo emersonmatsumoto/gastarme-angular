@@ -1,4 +1,4 @@
-<form method="POST" action="#" role="form">
+<form [formGroup]="creditCardForm" (ngSubmit)="onSubmit(creditCardForm)" novalidate>
     <mat-card class="credit-card">
         <mat-card-content>
             <mat-form-field class="full-width">
@@ -8,13 +8,13 @@
                 <input matInput placeholder="Nome Impresso" required type="text" maxlength="50" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <mat-form-field class="full-width">
-                <input matInput placeholder="Número" required type="text" maxlength="50" [(ngModel)]="cardNumber" [ngModelOptions]="{standalone: true}">
+                <input matInput placeholder="Número" id="cc-number" required type="tel" autocomplete="cc-number" ccNumber [(ngModel)]="cardNumber" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <mat-form-field class="small-width">
-                <input matInput placeholder="Válido até" required type="text" maxlength="5" [(ngModel)]="expiryDate" [ngModelOptions]="{standalone: true}">
+                <input matInput placeholder="Válido até" required type="tel" autocomplete="cc-exp" ccExp [(ngModel)]="expiryDate" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <mat-form-field class="small-width">
-                <input matInput placeholder="CVV" required type="text" maxlength="4" [(ngModel)]="cvv" [ngModelOptions]="{standalone: true}">
+                <input matInput placeholder="CVV" required type="tel" autocomplete="off" ccCVC [(ngModel)]="cvv" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <mat-form-field class="small-width">
                 <input matInput placeholder="Limite" required type="text" maxlength="10" [(ngModel)]="limit" [ngModelOptions]="{standalone: true}">
@@ -23,7 +23,7 @@
                 <input matInput placeholder="Dia do Pagamento" required type="text" maxlength="10" [(ngModel)]="payday" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
             <div>
-                <button mat-raised-button color="primary" (click)="add()" type="submit" class="full-width">Adicionar</button>
+                <button mat-raised-button color="primary" type="submit" class="full-width">Adicionar</button>
             </div>
         </mat-card-content>
     </mat-card>

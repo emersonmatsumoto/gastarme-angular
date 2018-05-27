@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule, LOCALE_ID} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {UserRegistrationService} from "./service/user-registration.service";
@@ -33,6 +33,9 @@ import { UserService } from "./service/user.service";
 import { UserComponent } from './secure/user/user.component';
 import localeBr from '@angular/common/locales/pt';
 import { registerLocaleData } from "@angular/common";
+import { SharedModule } from "./shared/shared.module";
+import { SnackbarComponent } from "./shared/messages/snackbar/snackbar.component";
+import { CreditCardDirectivesModule } from "angular-cc-library";
 registerLocaleData(localeBr);
 
 @NgModule({
@@ -59,14 +62,18 @@ registerLocaleData(localeBr);
         WalletComponent,
         OrderComponent,
         AdminComponent,
-        UserComponent
+        UserComponent,
+        SnackbarComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         MaterialModule,
+        CreditCardDirectivesModule,
+        SharedModule.forRoot(),
         routing
     ],
     providers: [
