@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: circleci/node:8.10
     working_directory: ~/circle-tmp-folder
     steps:
       - checkout
